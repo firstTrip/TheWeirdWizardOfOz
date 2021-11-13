@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     private Vector2 srSize;
 
+    [SerializeField] private GameObject holdObj;
+
     #endregion
 
     #region ÄÄÆ÷³ÍÆ®
@@ -38,7 +40,10 @@ public class Player : MonoBehaviour
     private enum PlayerState
     { 
         Death,
-        Alive
+        Alive,
+        Jump,
+        Walk,
+         Idle
     
     }
 
@@ -54,12 +59,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerState == PlayerState.Death)
+            return;
 
         Dash();
        
         Jump();
         BetterJump();
+
+        Interation();
 
         StopSpeed();
 
@@ -67,6 +75,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (playerState == PlayerState.Death)
+            return;
+
         Move();
     }
 
@@ -87,7 +98,8 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        anim.SetBool("Run", true);
+        anim.SetBool("Walk", true);
+
         if(horizontal ==1)
         {
             rb.velocity = new Vector2(horizontal * moveSpeed,rb.velocity.y);
@@ -104,7 +116,7 @@ public class Player : MonoBehaviour
         }
 
         if(horizontal ==0)
-            anim.SetBool("Run", false);
+            anim.SetBool("Walk", false);
     }
 
 
@@ -140,12 +152,15 @@ public class Player : MonoBehaviour
         {
             moveSpeed = 5;
             Debug.Log("keyDown dash" +moveSpeed);
+            anim.SetBool("Run", true);
         }
 
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             moveSpeed = 3;
             Debug.Log("keyUp dash" + moveSpeed);
+            anim.SetBool("Run", false);
+
 
         }
 
@@ -155,15 +170,32 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("is jump");
-            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+
+            if (hit.collider !=null)
+            {
+                anim.SetTrigger("Jump");
+                Debug.Log(hit.collider.name);
+                Debug.Log("is jump");
+                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+            }
+            
 
         }
     }
 
     private void Interation()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            anim.SetBool("Pick", true);
 
+            if (holdObj != null)
+                anim.SetBool("Pick", false);
+            else
+                anim.SetBool("Hold", true);
+        }
     }
 
 
@@ -177,6 +209,7 @@ public class Player : MonoBehaviour
     {
         playerState = PlayerState.Death;
 
+        anim.SetBool("GameOver", true);
         Debug.Log("PlayerState : " + playerState);
     }
 
