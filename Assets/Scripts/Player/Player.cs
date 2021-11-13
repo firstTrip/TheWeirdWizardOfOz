@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Animator anim;
     #endregion
 
     #region PlayerEnum
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         srSize = sr.transform.localScale;
 
@@ -85,6 +87,7 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        anim.SetBool("Run", true);
         if(horizontal ==1)
         {
             rb.velocity = new Vector2(horizontal * moveSpeed,rb.velocity.y);
@@ -99,6 +102,9 @@ public class Player : MonoBehaviour
             //왼쪽 방향 보기
             transform.localScale = new Vector3(srSize.x * (-1), srSize.y, 0);
         }
+
+        if(horizontal ==0)
+            anim.SetBool("Run", false);
     }
 
 
@@ -123,6 +129,7 @@ public class Player : MonoBehaviour
 
             rb.velocity = Vector2.zero;
 
+           
         }
 
     }
