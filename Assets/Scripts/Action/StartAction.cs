@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StartAction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject[] obj;
 
     private void Action()
     {
 
+        for (int i = 0; i < obj.Length; i++)
+        {
+            obj[i].GetComponent<ActionObj>().ObjStart();
+        }
     }
 }
