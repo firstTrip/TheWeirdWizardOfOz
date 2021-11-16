@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject holdObj;
     [SerializeField] private Transform holdPos;
 
+    private bool isMove;
+
     #endregion
 
     #region ÄÄÆ÷³ÍÆ®
@@ -44,7 +46,8 @@ public class Player : MonoBehaviour
         Alive,
         Jump,
         Walk,
-        Idle
+        Idle,
+        Wait
     
     }
 
@@ -60,7 +63,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerState == PlayerState.Death)
+        if (playerState == PlayerState.Death || playerState == PlayerState.Wait)
             return;
 
         Dash();
@@ -69,14 +72,14 @@ public class Player : MonoBehaviour
         BetterJump();
 
         Interation();
-
+        isUse();
         StopSpeed();
 
     }
 
     private void FixedUpdate()
     {
-        if (playerState == PlayerState.Death)
+        if (playerState == PlayerState.Death || playerState == PlayerState.Wait)
             return;
 
         Move();
@@ -196,12 +199,12 @@ public class Player : MonoBehaviour
 
             if (hit.collider != null)
             {
+                playerState = PlayerState.Wait;
                 anim.SetBool("Hold", true);
 
                 Debug.Log("is it item");
-                holdObj = hit.collider.gameObject;
-                holdObj.transform.position = holdPos.position;
-                holdObj.transform.parent = this.gameObject.transform;
+                StartCoroutine(AfterAnim(GetAnimDuration("Hold") + 0.3f, hit.collider.gameObject));
+               
             }
             else
                 anim.SetBool("Pick", false);
@@ -218,7 +221,46 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void isUse()
+    {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            if (holdObj != null)
+            {
+                holdObj.transform.position = transform.position;
+                holdObj.transform.parent = null;
+                holdObj = null;
+            }
+        }
+    }
 
+    private float GetAnimDuration(string animName)
+    {
+        //string name = string.Empty;
+
+        float time = 0f;
+        RuntimeAnimatorController ac = anim.runtimeAnimatorController;
+
+        for(int i=0;i<ac.animationClips.Length;i++)
+        {
+            if(ac.animationClips[i].name == animName)
+                time = ac.animationClips[i].length;
+        }
+        Debug.Log(time);
+
+        return time;
+    }
+
+    private IEnumerator AfterAnim(float waitTime,GameObject obj)
+    {
+        yield return new WaitForSeconds(waitTime);
+        holdObj = obj;
+        holdObj.transform.position = holdPos.position;
+        holdObj.transform.parent = this.gameObject.transform;
+
+        playerState = PlayerState.Idle;
+
+    }
 
     #endregion
 
