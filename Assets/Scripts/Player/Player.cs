@@ -26,12 +26,13 @@ public class Player : MonoBehaviour
     private Vector2 srSize;
 
     [SerializeField] private GameObject holdObj;
+    [SerializeField] private Transform holdPos;
 
     #endregion
 
     #region ÄÄÆ÷³ÍÆ®
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
     #endregion
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
         Alive,
         Jump,
         Walk,
-         Idle
+        Idle
     
     }
 
@@ -117,6 +118,7 @@ public class Player : MonoBehaviour
 
         if(horizontal ==0)
             anim.SetBool("Walk", false);
+
     }
 
 
@@ -190,11 +192,29 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             anim.SetBool("Pick", true);
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1f, LayerMask.GetMask("Item"));
 
+            if (hit.collider != null)
+            {
+                anim.SetBool("Hold", true);
+
+                Debug.Log("is it item");
+                holdObj = hit.collider.gameObject;
+                holdObj.transform.position = holdPos.position;
+                holdObj.transform.parent = this.gameObject.transform;
+            }
+            else
+                anim.SetBool("Pick", false);
+
+            /*
             if (holdObj != null)
                 anim.SetBool("Pick", false);
             else
                 anim.SetBool("Hold", true);
+            */
+
+            
+
         }
     }
 

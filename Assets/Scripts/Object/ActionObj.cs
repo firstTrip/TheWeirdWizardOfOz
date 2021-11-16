@@ -6,6 +6,14 @@ public class ActionObj : MonoBehaviour
 {
     protected bool isActive = false; // 시작이 안되게 만들어짐 true 일때 사용가능
 
+    public enum ObjectType 
+    {
+        Grab,
+        Obstacle
+    }
+
+    public ObjectType objectType;
+
     // Start is called before the first frame update
     void Start()
     {
