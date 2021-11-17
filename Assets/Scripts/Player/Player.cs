@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     private Vector2 srSize;
 
-    [SerializeField] private GameObject holdObj;
+    [SerializeField] public GameObject holdObj;
     [SerializeField] private Transform holdPos;
 
     private bool isMove;
@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
         Jump,
         Walk,
         Idle,
-        Wait
+        Wait,
+        Hold
     
     }
 
@@ -72,7 +73,6 @@ public class Player : MonoBehaviour
         BetterJump();
 
         Interation();
-        isUse();
         StopSpeed();
 
     }
@@ -102,9 +102,18 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        anim.SetBool("Walk", true);
+        if(holdObj !=null)
+        {
+            anim.SetBool("Hold_Walk", true);
+        }
+        else
+        {
+            anim.SetBool("Walk", true);
 
-        if(horizontal ==1)
+        }
+
+
+        if (horizontal ==1)
         {
             rb.velocity = new Vector2(horizontal * moveSpeed,rb.velocity.y);
 
@@ -120,7 +129,20 @@ public class Player : MonoBehaviour
         }
 
         if(horizontal ==0)
-            anim.SetBool("Walk", false);
+        {
+
+            if (holdObj != null)
+            {
+                anim.SetBool("Hold_Walk", false);
+            }
+            else
+            {
+                anim.SetBool("Walk", false);
+
+            }
+            
+
+        }
 
     }
 
@@ -157,16 +179,32 @@ public class Player : MonoBehaviour
         {
             moveSpeed = 5;
             Debug.Log("keyDown dash" +moveSpeed);
-            anim.SetBool("Run", true);
+            if (holdObj != null)
+            {
+                anim.SetBool("Hold_Run", true);
+            }
+            else
+            {
+                anim.SetBool("Run", true);
+
+            }
         }
 
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             moveSpeed = 3;
             Debug.Log("keyUp dash" + moveSpeed);
-            anim.SetBool("Run", false);
+            
 
+            if (holdObj != null)
+            {
+                anim.SetBool("Hold_Run", false);
+            }
+            else
+            {
+                anim.SetBool("Run", false);
 
+            }
         }
 
     }
@@ -204,7 +242,9 @@ public class Player : MonoBehaviour
 
                 Debug.Log("is it item");
                 StartCoroutine(AfterAnim(GetAnimDuration("Hold") + 0.3f, hit.collider.gameObject));
-               
+
+                StartCoroutine(AfterHoldAnim(GetAnimDuration("Hold") + 0.3f));
+
             }
             else
                 anim.SetBool("Pick", false);
@@ -221,18 +261,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void isUse()
-    {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            if (holdObj != null)
-            {
-                holdObj.transform.position = transform.position;
-                holdObj.transform.parent = null;
-                holdObj = null;
-            }
-        }
-    }
+    
 
     private float GetAnimDuration(string animName)
     {
@@ -258,7 +287,17 @@ public class Player : MonoBehaviour
         holdObj.transform.position = holdPos.position;
         holdObj.transform.parent = this.gameObject.transform;
 
-        playerState = PlayerState.Idle;
+        playerState = PlayerState.Hold;
+
+    }
+
+    private IEnumerator AfterHoldAnim(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        anim.SetBool("Hold_Idle", true);
+
+        playerState = PlayerState.Hold;
 
     }
 
@@ -266,7 +305,19 @@ public class Player : MonoBehaviour
 
     #region public ÇÔ¼ö
 
+    public void isUse()
+    {
 
+        if (holdObj != null)
+        {
+            holdObj.transform.position = transform.position;
+            holdObj.transform.parent = null;
+            Destroy(holdObj);
+            anim.SetBool("Pick", false);
+            anim.SetBool("Hold", false);
+        }
+
+    }
     public void GetDamage()
     {
         playerState = PlayerState.Death;
