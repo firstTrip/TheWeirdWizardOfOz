@@ -9,7 +9,8 @@ public class ActionObj : MonoBehaviour
     public enum ObjectType 
     {
         Grab,
-        Obstacle
+        Obstacle,
+        Boss
     }
 
     public ObjectType objectType;
