@@ -8,6 +8,8 @@ public class DoorObj : MonoBehaviour
     public string objName =null;
     private bool isActive;
 
+    public string StageString;
+
     [SerializeField] private GameObject Icon;
 
     void Update()
@@ -26,6 +28,26 @@ public class DoorObj : MonoBehaviour
         {
             isActive = true;
 
+            if(ray.collider.gameObject.GetComponent<Player>().holdObj != null)
+            {
+                if (objName.Equals(ray.collider.gameObject.GetComponent<Player>().holdObj.GetComponent<ObjId>().name))
+                {
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        ray.collider.gameObject.GetComponent<Player>().isUse();
+                        Debug.Log("is open");
+
+                        UiManager.Instance.CallFadeOut();
+                        StartCoroutine(OneSec());
+                    }
+                    
+                }
+                else
+                    Debug.Log("notthin");
+            }
+            else
+                Debug.Log("don't have Key");
+
         }
         else
         {
@@ -33,25 +55,20 @@ public class DoorObj : MonoBehaviour
 
         }
 
-    }
+        
 
+    }
+    IEnumerator OneSec()
+    {
+
+        yield return new WaitForSeconds(1f);
+        StageManager.Instance.LoadScene(StageString);
+
+
+    }
     private void ShowIcon(bool isActive)
     {
         Icon.SetActive(isActive);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            if(collision.gameObject.GetComponent<Player>().holdObj !=null)
-            {
-                if(objName.Equals(collision.gameObject.GetComponent<Player>().holdObj.GetComponent<ObjId>().name))
-                {
-                    collision.gameObject.GetComponent<Player>().isUse();
-                    Debug.Log("is open");
-                }
-            }    
-        }
-    }
 }

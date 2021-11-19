@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndValue: 10
-  StartValue: 10
+  Duration: 3
   ShakeDuration: 1
   isStart: 1
   isVibration: 0

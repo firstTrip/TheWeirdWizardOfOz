@@ -71,14 +71,14 @@ public class UiManager : MonoBehaviour
         Color tempColor = fadeImg.color;
 
 
-        while (tempColor.a < 0.9f)
+        while (tempColor.a < 1f)
         {
             tempColor.a += Time.deltaTime / (fadeInTime / 2);
 
             fadeImg.color = tempColor;
 
-            if (tempColor.a >= 0.9f)
-                tempColor.a = 0.9f;
+            if (tempColor.a >= 1f)
+                tempColor.a = 1f;
 
             yield return new WaitForSeconds(0.01f);
         }

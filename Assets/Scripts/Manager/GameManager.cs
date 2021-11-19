@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public GameObject Player;
+
     public enum GameState
     {
         Pause,
@@ -49,10 +51,18 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         #endregion
+
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            DataManager.Instance.Load();
+            //UiManager.Instance.CallFadeIn();
+        }
+
         GamePause();
         GameCondition();
     }
@@ -66,6 +76,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void InitPlayer()
+    {
+        Player.GetComponent<Player>().ResetPlayer();
+    }
     void GameCondition()
     {
         if (gameState == GameState.Pause)

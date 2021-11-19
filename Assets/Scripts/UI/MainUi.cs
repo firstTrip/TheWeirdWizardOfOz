@@ -24,7 +24,8 @@ public class MainUi : MonoBehaviour
     public void LoadTest_WJ()
     {
 
-        SceneManager.LoadScene("Stage_1");
+        StageManager.Instance.LoadScene("Stage_1");
+
         /*
         button.gameObject.SetActive(false);
         StartCoroutine(FadeIn());

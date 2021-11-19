@@ -305,6 +305,16 @@ public class Player : MonoBehaviour
 
     #region public ÇÔ¼ö
 
+    public void ResetPlayer()
+    {
+        if(playerState == PlayerState.Death)
+        {
+            playerState = PlayerState.Idle;
+
+            anim.SetBool("GameOver", false);
+        }
+       
+    }
     public void isUse()
     {
 

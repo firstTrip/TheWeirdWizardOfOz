@@ -28,6 +28,8 @@ public class StageManager : MonoBehaviour
     }
     #endregion
 
+    private static int StageNum;
+
     void Awake()
     {
         #region SingleTon
@@ -40,6 +42,7 @@ public class StageManager : MonoBehaviour
             Destroy(this);
         }
         #endregion
+        StageNum = 0;
     }
 
     private void Start()
@@ -47,6 +50,13 @@ public class StageManager : MonoBehaviour
         SceneManager.sceneLoaded += LoadedsceneEvent;
     }
 
+    public void LoadScene(string stageName)
+    {
+        StageNum++;
+        Debug.Log("Stage_" + StageNum);
+
+        SceneManager.LoadScene(stageName);
+    }
 
     private void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {

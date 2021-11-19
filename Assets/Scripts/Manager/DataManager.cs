@@ -66,6 +66,7 @@ public class DataManager : MonoBehaviour
 
     public void Load()
     {
+        GameManager.Instance.InitPlayer();
         Player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), 0);
 
     }
