@@ -6,7 +6,7 @@ using DG.Tweening;
 public class MoveToYBlock : MonoBehaviour
 {
     [SerializeField] float EndValue = 3;
-    [SerializeField] float StartValue = 3;
+    [SerializeField] float Duration = 3;
     [SerializeField] float ShakeDuration = 1;
     [Header("동작 가능 여부")]
     [Tooltip("Y 축으로 이동하는가")] public bool isStart;
@@ -48,7 +48,7 @@ public class MoveToYBlock : MonoBehaviour
                 transform.DOShakePosition(3f);
                 isVibration = false;
             }
-            transform.DOMoveY(EndValue, StartValue).SetEase(ease).SetLoops(loopNum, loopType);
+            transform.DOMoveY(this.transform.position.x + EndValue, Duration).SetEase(ease).SetLoops(loopNum, loopType);
             isStart = false;
         }
 

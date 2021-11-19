@@ -7,7 +7,7 @@ public class MoveToXBlock : MonoBehaviour
 {
 
     [SerializeField] float EndValue = 3;
-    [SerializeField] float StartValue = 3;
+    [SerializeField] float Duration = 3;
     [SerializeField] float ShakeDuration = 1;
 
     [Space]
@@ -50,7 +50,7 @@ public class MoveToXBlock : MonoBehaviour
                 transform.DOShakePosition(ShakeDuration);
                 isVibration = false;
             }
-            transform.DOMoveX(EndValue, StartValue).SetEase(ease).SetLoops(loopNum, loopType);
+            transform.DOMoveX(this.transform.position.x + EndValue, Duration).SetEase(ease).SetLoops(loopNum, loopType);
             isStart = false;
         }
 

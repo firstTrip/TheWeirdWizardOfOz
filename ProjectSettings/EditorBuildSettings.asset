@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 75e928d0842899e488c45ff7bd331df8
   - enabled: 1
+    path: Assets/Scenes/Stage_1.unity
+    guid: ce26ca3d16b85da47b5ac2198c96e7a2
+  - enabled: 1
     path: Assets/Scenes/Test_WJ.unity
     guid: 0dfa4db149431ce45a0ba6693c2f1eca
   - enabled: 1
