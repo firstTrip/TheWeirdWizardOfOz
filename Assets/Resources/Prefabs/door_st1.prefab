@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 668005181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0000013351441, y: 2.66, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7767668355863332487}
   m_RootOrder: 0
@@ -68,15 +68,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1562492961
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d78af8327a65ef4f8a999d5ea06703a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a5452c7ef655874981b983cd6697187, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.14, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 7767668355863332484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.614286, y: 29.946146, z: 0}
-  m_LocalScale: {x: 1.4285713, y: 1.2857141, z: 2}
+  m_LocalScale: {x: 1.125, y: 1.0446427, z: 2}
   m_Children:
   - {fileID: 668005182}
   m_Father: {fileID: 0}
@@ -178,6 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568ff7df38655124f94379541e47a9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: Stage1_key
-  StageString: Stage_3
+  objName: Stage8_key
+  StageString: Credit
   Icon: {fileID: 668005181}

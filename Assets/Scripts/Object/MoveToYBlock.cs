@@ -48,7 +48,7 @@ public class MoveToYBlock : MonoBehaviour
                 transform.DOShakePosition(3f);
                 isVibration = false;
             }
-            transform.DOMoveY(this.transform.position.x + EndValue, Duration).SetEase(ease).SetLoops(loopNum, loopType);
+            transform.DOMoveY(this.transform.position.y + EndValue, Duration).SetEase(ease).SetLoops(loopNum, loopType);
             isStart = false;
         }
 

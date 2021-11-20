@@ -30,6 +30,7 @@ public class StageManager : MonoBehaviour
 
     private static int StageNum;
 
+
     void Awake()
     {
         #region SingleTon
@@ -53,6 +54,7 @@ public class StageManager : MonoBehaviour
     public void ReLoad()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void LoadScene(string stageName)
@@ -68,6 +70,7 @@ public class StageManager : MonoBehaviour
         Debug.Log(scene.name + "으로 변경되었습니다.");
 
         UiManager.Instance.CallFadeIn();
+        TimeLineManager.Instance.TimeLinePlay();
     }
 
 }

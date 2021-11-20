@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState;
 
+
+    private bool Flag =false;
     void Awake()
     {
         #region SingleTon
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour
         #endregion
 
         Player = GameObject.FindGameObjectWithTag("Player");
+
+
     }
     // Update is called once per frame
     void Update()
@@ -68,13 +72,21 @@ public class GameManager : MonoBehaviour
         ReStart();
     }
 
-    void GamePause()
+    public void GamePause()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            gameState = GameState.Pause;
+            Flag = !Flag;
+            UiManager.Instance.CallPause();
             Debug.Log("Game Pause ");
         }
+    }
+
+    public void GameGo()
+    {
+        Flag = !Flag;
+        UiManager.Instance.CallPause();
+        Debug.Log("Game Pause ");
     }
 
     public void ReStart()
@@ -92,9 +104,9 @@ public class GameManager : MonoBehaviour
     }
     void GameCondition()
     {
-        if (gameState == GameState.Pause)
+        if (Flag)
             Time.timeScale = 0;
-        else if(gameState == GameState.Process)
+        else if(!Flag)
             Time.timeScale = 1;
     }
 }

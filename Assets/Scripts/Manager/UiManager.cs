@@ -11,10 +11,12 @@ public class UiManager : MonoBehaviour
     // 
 
     [SerializeField] private Image fadeImg;
-
+    [SerializeField] private GameObject PauseImg;
     #region SingleTon
     /* SingleTon */
     private static UiManager instance;
+
+    
     public static UiManager Instance
     {
         get
@@ -49,9 +51,38 @@ public class UiManager : MonoBehaviour
         #endregion
     }
 
+    private bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
+        PauseImg.SetActive(false);
+    }
+
+    public void Continue()
+    {
+        Debug.Log("is it");
+        GameManager.Instance.GameGo();
+    }
+
+    public void CallPause()
+    {
+        isActive = !isActive;
+        if(isActive)
+            PauseImg.SetActive(true);
+        else
+            PauseImg.SetActive(false);
+
+
+    }
+
+    public void Main()
+    {
+        StageManager.Instance.LoadScene("Main");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 
