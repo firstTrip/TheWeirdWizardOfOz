@@ -11,7 +11,7 @@ public class StartAction : MonoBehaviour
 
         for (int i = 0; i < obj.Length; i++)
         {
-            obj[i].GetComponent<ActionObj>().ObjStart();
+            obj[i].GetComponent<ActionObj>().Action();
         }
     }
 }

@@ -15,9 +15,9 @@ public class WindObj : ActionObj
 
     }
 
-    public override void ObjStart()
+    public override void Action()
     {
-        base.ObjStart();
+        base.Action();
     }
 
     public void OnTriggerStay2D(Collider2D collision)

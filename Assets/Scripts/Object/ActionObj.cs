@@ -30,7 +30,7 @@ public class ActionObj : MonoBehaviour
 
     }
 
-    public virtual void ObjStart()
+    public virtual void Action()
     {
 
         isActive = true;

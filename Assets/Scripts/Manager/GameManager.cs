@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
         GamePause();
         GameCondition();
+        ReStart();
     }
 
     void GamePause()
@@ -73,6 +74,15 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.Pause;
             Debug.Log("Game Pause ");
+        }
+    }
+
+    public void ReStart()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StageManager.Instance.ReLoad();
+            Debug.Log("Reload");
         }
     }
 

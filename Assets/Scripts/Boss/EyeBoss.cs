@@ -120,9 +120,9 @@ public class EyeBoss : ActionObj
             
     }
 
-    public override void ObjStart()
+    public override void Action()
     {
-        base.ObjStart();
+        base.Action();
     }
 
 }

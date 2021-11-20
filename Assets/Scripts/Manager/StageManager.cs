@@ -50,6 +50,11 @@ public class StageManager : MonoBehaviour
         SceneManager.sceneLoaded += LoadedsceneEvent;
     }
 
+    public void ReLoad()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void LoadScene(string stageName)
     {
         StageNum++;

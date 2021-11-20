@@ -10,6 +10,10 @@ public class FootBoss : ActionObj
     private Rigidbody2D rb;
     private Transform TargetPoint;
 
+    private Animator anim;
+
+
+    private bool isJump =true;
     private float axcelSpeed = 1f;
     private float tracingTime = 0f;
     [Header("최대가속 시간")] public float AxcelMaxTime = 2.0f;
@@ -28,8 +32,9 @@ public class FootBoss : ActionObj
 
         }
 
-        isActive = true;
+        isActive = false;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,6 +64,7 @@ public class FootBoss : ActionObj
             TargetPoint = Player.transform;
             isArrive = false;
             Hunt();
+            IsJump();
         }
         else
         {
@@ -132,8 +138,34 @@ public class FootBoss : ActionObj
         }
     }
 
-    public override void ObjStart()
+    private void IsJump()
     {
-        base.ObjStart();
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + new Vector2(1,0), Vector2.down, 2f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay((Vector2)transform.position + new Vector2(0.5f, 0), Vector2.down * 2f, Color.blue);
+
+
+        Debug.Log(isJump);
+        Debug.Log(hit);
+
+        if (!hit && isJump)
+        {
+            rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+            Debug.Log("is empty");
+            StartCoroutine(isJumpReset());
+        }
+    }
+
+    IEnumerator isJumpReset()
+    {
+        isJump = false;
+        yield return new WaitForSeconds(1f);
+        isJump = true;
+    }
+
+    public override void Action()
+    {
+        base.Action();
+
+        anim.SetBool("Start", true);
     }
 }
