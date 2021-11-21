@@ -3,7 +3,13 @@ guid: 377427a382fbf424f8cde1d955dbae6f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - MainBGM: {fileID: 8300000, guid: dbc87fadd001afd469c96bc6132eda69, type: 3}
+  - GameBGM: {fileID: 8300000, guid: 94eda7825b8e9c249af6b0c6ae0bd12c, type: 3}
+  - Scream1: {fileID: 8300000, guid: 443504adecf2df346be19d41a94ab763, type: 3}
+  - Scream2: {fileID: 8300000, guid: 73e9cf803802441498c89db8b84c0058, type: 3}
+  - Scream3: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

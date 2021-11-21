@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
 
     private bool Flag =false;
+
     void Awake()
     {
         #region SingleTon
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
+        AudioManager.Instance.PlayLoopSound("StageLoopSound");
 
     }
     // Update is called once per frame

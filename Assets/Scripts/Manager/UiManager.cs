@@ -12,6 +12,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image fadeImg;
     [SerializeField] private GameObject PauseImg;
+    [SerializeField] private GameObject ReStartImg;
     #region SingleTon
     /* SingleTon */
     private static UiManager instance;
@@ -52,10 +53,12 @@ public class UiManager : MonoBehaviour
     }
 
     private bool isActive = false;
+    private bool isReStart = false;
     // Start is called before the first frame update
     void Start()
     {
         PauseImg.SetActive(false);
+        ReStartImg.SetActive(false);
     }
 
     public void Continue()
@@ -85,6 +88,16 @@ public class UiManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ReStart()
+    {
+        isReStart = !isReStart;
+
+        if (isReStart)
+            ReStartImg.SetActive(true);
+        else
+            ReStartImg.SetActive(false);
+
+    }
 
     public void CallFadeIn()
     {

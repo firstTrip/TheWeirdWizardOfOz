@@ -333,8 +333,13 @@ public class Player : MonoBehaviour
         playerState = PlayerState.Death;
 
         anim.SetBool("GameOver", true);
+        Invoke("ReStartUi", 1f);
         Debug.Log("PlayerState : " + playerState);
     }
 
+    public void ReStartUi()
+    {
+        UiManager.Instance.ReStart();
+    }
     #endregion
 }

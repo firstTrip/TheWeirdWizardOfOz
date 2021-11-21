@@ -8,23 +8,25 @@ public class MainUi : MonoBehaviour
 {
 
     [SerializeField] private Image fadeImg;
-    [SerializeField] private GameObject button;
     // Start is called before the first frame update
     void Start()
     {
         //fadeImg.gameObject.SetActive(false);
+        AudioManager.Instance.PlayLoopSound("MainLoopSound");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.anyKeyDown)
+            StageManager.Instance.LoadScene("Stage_1");
+
     }
 
     public void LoadTest_WJ()
     {
 
-        StageManager.Instance.LoadScene("Stage_1");
 
         /*
         button.gameObject.SetActive(false);

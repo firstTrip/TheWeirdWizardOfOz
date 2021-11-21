@@ -31,6 +31,14 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public AudioClip MainBGM;
+
+    public AudioClip GameBGM;
+
+
+    public AudioClip Scream1;
+    public AudioClip Scream2;
+
     private void Awake()
     {
         #region SingleTon
@@ -44,6 +52,7 @@ public class AudioManager : MonoBehaviour
         }
         #endregion
 
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -51,13 +60,14 @@ public class AudioManager : MonoBehaviour
     {
         if (!audioSource.isPlaying)
             audioSource.Stop();
+
         StartCoroutine(loopSound);
     }
 
-    IEnumerator NomalLoopSound()
+    IEnumerator MainLoopSound()
     {
-        audioSource.volume = 1;
-        //audioSource.clip = NomalBGM[0];
+        audioSource.volume = 0.5f;
+        audioSource.clip = MainBGM;
         audioSource.Play();
 
         while (true)
@@ -65,7 +75,7 @@ public class AudioManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             if (!audioSource.isPlaying)
             {
-                //audioSource.clip = NomalBGM[1];
+                audioSource.clip = MainBGM;
                 audioSource.Play();
                 audioSource.loop = true;
             }
@@ -73,10 +83,10 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    IEnumerator BossLoopSound()
+    IEnumerator StageLoopSound()
     {
-        audioSource.volume = 1;
-        //audioSource.clip = BossBgm[0];
+        audioSource.volume = 0.3f;
+        audioSource.clip = GameBGM;
         audioSource.Play();
 
         while (true)
@@ -84,7 +94,7 @@ public class AudioManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             if (!audioSource.isPlaying)
             {
-                //audioSource.clip = BossBgm[1];
+                audioSource.clip = GameBGM;
                 audioSource.Play();
                 audioSource.loop = true;
             }
@@ -95,17 +105,20 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string soundName)
     {
-        if (soundName == "BGM")
+        if (soundName == "Scream1")
         {
-            //audioSource.PlayOneShot(BGM);
+
+            audioSource.PlayOneShot(Scream1);
+
         }
-        
+        else if(soundName == "Scream2")
+        {
+            audioSource.PlayOneShot(Scream2);
+
+        }
+      
+
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
