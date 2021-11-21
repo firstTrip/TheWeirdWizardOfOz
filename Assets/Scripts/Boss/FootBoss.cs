@@ -21,6 +21,12 @@ public class FootBoss : ActionObj
     [SerializeField] private float Values = 3.0f;
 
     private bool isArrive;
+
+    public AudioSource audioSource;
+    public AudioClip Run;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -167,5 +173,18 @@ public class FootBoss : ActionObj
         base.Action();
 
         anim.SetBool("Start", true);
+        PlaySound();
+    }
+
+    public void PlaySound()
+    {
+        audioSource.clip = Run;
+        audioSource.Play();
+
+        audioSource.volume = 1;
+        audioSource.loop = true;
+
+
+
     }
 }

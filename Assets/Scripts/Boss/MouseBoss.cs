@@ -111,7 +111,7 @@ public class MouseBoss : MonoBehaviour
         if(collision.gameObject.CompareTag("DamageToBoss"))
         {
             Debug.Log("damage");
-            Destroy(gameObject);
+            sr.sprite = null;
 
             door.SetActive(true);
             next.SetActive(true);

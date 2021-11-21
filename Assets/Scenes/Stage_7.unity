@@ -1422,6 +1422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8417400294376008463, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 443884961}
     - target: {fileID: 8417400294376008465, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1431,6 +1435,11 @@ PrefabInstance:
 --- !u!4 &443884960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8417400294376008460, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
+  m_PrefabInstance: {fileID: 443884959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &443884961 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8417400294376008462, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
   m_PrefabInstance: {fileID: 443884959}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &457607822 stripped

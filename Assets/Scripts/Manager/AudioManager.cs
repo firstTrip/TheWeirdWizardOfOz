@@ -107,7 +107,6 @@ public class AudioManager : MonoBehaviour
     {
         if (soundName == "Scream1")
         {
-
             audioSource.PlayOneShot(Scream1);
 
         }
@@ -116,8 +115,6 @@ public class AudioManager : MonoBehaviour
             audioSource.PlayOneShot(Scream2);
 
         }
-      
-
 
     }
 

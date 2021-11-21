@@ -3956,6 +3956,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1530253286171719993, guid: 7535401902afc2f48870f9ab92d74d1d, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530253286171719993, guid: 7535401902afc2f48870f9ab92d74d1d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7535401902afc2f48870f9ab92d74d1d, type: 3}
 --- !u!1 &372651089
@@ -10702,6 +10710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8417400294376008463, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 971938573}
     - target: {fileID: 8417400294376008465, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -10711,6 +10723,11 @@ PrefabInstance:
 --- !u!4 &971938572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8417400294376008460, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
+  m_PrefabInstance: {fileID: 971938571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &971938573 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8417400294376008462, guid: 77a754ca26ddd5a4a818b10596c50dae, type: 3}
   m_PrefabInstance: {fileID: 971938571}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &978067729

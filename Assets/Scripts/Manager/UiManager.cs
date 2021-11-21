@@ -90,12 +90,10 @@ public class UiManager : MonoBehaviour
 
     public void ReStart()
     {
-        isReStart = !isReStart;
+        Debug.Log("µé¿È?");
 
-        if (isReStart)
             ReStartImg.SetActive(true);
-        else
-            ReStartImg.SetActive(false);
+ 
 
     }
 

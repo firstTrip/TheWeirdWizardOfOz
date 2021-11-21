@@ -331,9 +331,9 @@ public class Player : MonoBehaviour
     public void GetDamage()
     {
         playerState = PlayerState.Death;
-
+        PlaySound();
         anim.SetBool("GameOver", true);
-        Invoke("ReStartUi", 1f);
+        Invoke("ReStartUi", 0.5f);
         Debug.Log("PlayerState : " + playerState);
     }
 
@@ -342,4 +342,14 @@ public class Player : MonoBehaviour
         UiManager.Instance.ReStart();
     }
     #endregion
+    public AudioSource audioSource;
+
+    public AudioClip Die;
+    public void PlaySound()
+    {
+        audioSource.volume = 0.05f;
+
+        audioSource.PlayOneShot(Die);
+
+    }
 }
