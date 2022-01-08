@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
             anim.SetBool("Pick", true);
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1f, LayerMask.GetMask("Item"));
 
-            if (hit.collider != null)
+            if (hit.collider != null && holdObj ==null)
             {
                 playerState = PlayerState.Wait;
                 anim.SetBool("Hold", true);
