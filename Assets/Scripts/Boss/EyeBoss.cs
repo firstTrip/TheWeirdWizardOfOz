@@ -67,7 +67,6 @@ public class EyeBoss : ActionObj
                 if (tempColor.a <= 0f)
                     tempColor.a = 0f;
 
-
                 yield return new WaitForSeconds(0.05f);
 
 
@@ -91,13 +90,10 @@ public class EyeBoss : ActionObj
 
         if (hit.collider != null)
         {
-            Debug.Log("is tracing");
             TargetPoint = Player.transform;
+            // 레이저 생성
         }
-        else
-        {
 
-        }
     }
 
     // Update is called once per frame

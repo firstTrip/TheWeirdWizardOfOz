@@ -60,9 +60,6 @@ public class FootBoss : ActionObj
         float distance = direction.magnitude;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, LayerMask.GetMask("Player"));
-        Debug.DrawRay(transform.position, direction, Color.red, 0.1f);
-
-        Debug.Log(hit.collider.name);
 
         if (hit.collider != null)
         {
@@ -71,10 +68,6 @@ public class FootBoss : ActionObj
             isArrive = false;
             Hunt();
             IsJump();
-        }
-        else
-        {
-
         }
     }
 
@@ -156,7 +149,6 @@ public class FootBoss : ActionObj
         if (!hit && isJump)
         {
             rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
-            Debug.Log("is empty");
             StartCoroutine(isJumpReset());
         }
     }

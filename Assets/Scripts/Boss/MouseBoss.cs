@@ -83,10 +83,9 @@ public class MouseBoss : MonoBehaviour
     {
         Icon.SetActive(isActive);
     }
+
     IEnumerator changeImg()
     {
-        Debug.Log("dnwls");
-
         sr.sprite = mouth[0];
         yield return new WaitForSeconds(1f);
         sr.sprite = mouth[1];
