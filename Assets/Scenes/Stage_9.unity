@@ -4222,7 +4222,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 874165253}
   ground:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 80
 --- !u!4 &874165255
 Transform:
   m_ObjectHideFlags: 0
