@@ -64,6 +64,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UiManager.Instance.TextUI.gameObject.activeSelf)
+            return;
+
         if (playerState == PlayerState.Death || playerState == PlayerState.Wait)
             return;
 
@@ -79,6 +82,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (UiManager.Instance.TextUI.gameObject.activeSelf)
+        {
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
+            rb.velocity = Vector2.zero;
+
+            return;
+
+        }
+
         if (playerState == PlayerState.Death || playerState == PlayerState.Wait)
             return;
 
@@ -232,30 +245,36 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            anim.SetBool("Pick", true);
+
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1f, LayerMask.GetMask("Item"));
 
-            if (hit.collider != null && holdObj ==null)
+            if(hit.collider.gameObject.tag == "talkObj")
             {
-                playerState = PlayerState.Wait;
-                anim.SetBool("Hold", true);
+                if (UiManager.Instance.TextUI.gameObject.activeSelf)
+                    return;
 
-                Debug.Log("is it item");
-                StartCoroutine(AfterAnim(GetAnimDuration("Hold") + 0.3f, hit.collider.gameObject));
-
-                StartCoroutine(AfterHoldAnim(GetAnimDuration("Hold") + 0.3f));
+                UiManager.Instance.TextUI.SetActive(true);
+                TextManager.Instance.DoTalk(hit.collider.gameObject.GetComponent<ObjId>().id , hit.collider.gameObject.GetComponent<ObjId>().name);
 
             }
             else
-                anim.SetBool("Pick", false);
+            {
+                anim.SetBool("Pick", true);
 
-            /*
-            if (holdObj != null)
-                anim.SetBool("Pick", false);
-            else
-                anim.SetBool("Hold", true);
-            */
+                if (hit.collider != null && holdObj == null)
+                {
+                    playerState = PlayerState.Wait;
+                    anim.SetBool("Hold", true);
 
+                    Debug.Log("is it item");
+                    StartCoroutine(AfterAnim(GetAnimDuration("Hold") + 0.3f, hit.collider.gameObject));
+
+                    StartCoroutine(AfterHoldAnim(GetAnimDuration("Hold") + 0.3f));
+
+                }
+                else
+                    anim.SetBool("Pick", false);
+            }
             
 
         }

@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImg: {fileID: 0}
-  PauseImg: {fileID: 6410506169708785405, guid: d6dc9be4e8303ee4aac7b043f2d1b62f, type: 3}
+  PauseImg: {fileID: 0}
+  ReStartImg: {fileID: 0}
+  TextUI: {fileID: 0}

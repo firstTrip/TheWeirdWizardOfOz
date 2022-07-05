@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image fadeImg;
     [SerializeField] private GameObject PauseImg;
     [SerializeField] private GameObject ReStartImg;
+    public GameObject TextUI;
     #region SingleTon
     /* SingleTon */
     private static UiManager instance;
@@ -59,11 +60,11 @@ public class UiManager : MonoBehaviour
     {
         PauseImg.SetActive(false);
         ReStartImg.SetActive(false);
+        TextUI.SetActive(false);
     }
 
     public void Continue()
     {
-        Debug.Log("is it");
         GameManager.Instance.GameGo();
     }
 
@@ -74,7 +75,6 @@ public class UiManager : MonoBehaviour
             PauseImg.SetActive(true);
         else
             PauseImg.SetActive(false);
-
 
     }
 
