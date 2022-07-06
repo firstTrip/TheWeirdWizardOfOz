@@ -14,5 +14,7 @@ public class TextAction : MonoBehaviour
 
         UiManager.Instance.TextUI.SetActive(true);
         TextManager.Instance.DoTalk(id, name);
+
+        Destroy(this.gameObject);
     }
 }

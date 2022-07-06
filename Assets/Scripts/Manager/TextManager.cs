@@ -107,6 +107,77 @@ public class TextManager : MonoBehaviour
                 nowId = 0;
                 break;
 
+            // 스테이지 1 독백
+            case 5100:
+                nowId = id;
+                nowtextName = name;
+                textName.text = name;
+                talk.text = "앞으로 가면 되는걸까?? \n 저 가시는 너무 아파 보이는대....";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 5101:
+                textName.text = name;
+                talk.text = "집에 가고싶다.. 보고싶어... \n 엄마..";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 5102:
+                UiManager.Instance.TextUI.SetActive(false);
+                idx = 0;
+                nowId = 0;
+                break;
+
+            // 스테이지 2 독백
+            case 5200:
+                nowId = id;
+                nowtextName = name;
+                textName.text = name;
+                talk.text = "집으로 가기 위해선 앞으로 나아가야만해 \n 난 할 수 있어 꼭 집에 가고야 말거야";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 5201:
+                UiManager.Instance.TextUI.SetActive(false);
+                idx = 0;
+                nowId = 0;
+                break;
+
+
+            // 스테이지 3 독백
+            case 5300:
+                nowId = id;
+                nowtextName = name;
+                textName.text = name;
+                talk.text = "뛰어!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 5301:
+                UiManager.Instance.TextUI.SetActive(false);
+                idx = 0;
+                nowId = 0;
+                break;
+
+
+
+            // 스테이지 4 독백
+            case 5400:
+                nowId = id;
+                nowtextName = name;
+                textName.text = name;
+                talk.text = "바람이 나오네?? \n 잘 이용하면 저 높은곳을 올라갈 수 있을것 같아";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 5401:
+                UiManager.Instance.TextUI.SetActive(false);
+                idx = 0;
+                nowId = 0;
+                break;
+
+
+
 
             // 게시판
             case 100:
@@ -137,6 +208,33 @@ public class TextManager : MonoBehaviour
                 idx = 0;
                 nowId = 0;
                 break;
+
+
+            // 입
+            case 200:
+                nowId = id;
+                nowtextName = name;
+
+                textName.text = name;
+                talk.text = "나에게 맞는 단어를 가져와 나에게  먹여주거라";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 201:
+
+                textName.text = name;
+                talk.text = "그러면 너는 열쇠를  줄것이다.";
+                TMProUGUIDoText.DoText(talk, 1f);
+                break;
+
+            case 202:
+
+                UiManager.Instance.TextUI.SetActive(false);
+                idx = 0;
+                nowId = 0;
+                break;
+
+               
         }
 
     }

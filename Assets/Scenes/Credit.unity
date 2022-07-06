@@ -710,15 +710,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n\n2021 AYU Game Develope\n\n\n\n\n\n\n\nThe Weird Of OZ Wizrd\n\nTeam 
-    Munchkin\n\n\n\n\n\n\n\nStaff Roll\n\nGame designer\nWoo Jin Hwang \nEunjee kim\nJi
-    yeon Kang\n\n\n\nProgramming \nWoo Jin Hwang \n\n\n\nDesign\nEunjee kim\nJi yeon
-    Kang \n\n\n\nStage 1~3, 7~9\nJi yeon Kang \n\n\n\n\nStage 4~6, 10~12\nEunjee
-    kim\n\n\n\nTitle\nEunjee kim\n\n\n\n\n\n\nSpecial Thanks for\n\nAnyang Univ\nHojun
-    Ahn\n\n2021/11/15 \n~\n2021/11/21\n\nThank you For Playing\n"
+  m_text: "\n\n2022 GIGDC\n\n\n\n\n\n\n\nThe Weird Of OZ Wizrd\n\nTeam  OZ\n\n\n\n\n\n\n\nStaff
+    Roll\n\nGame designer\nWoo Jin Hwang \n\n\n\nProgramming \nWoo Jin Hwang \n\n\nDesign\nOh
+    So Min\n\n\n\nThank you For Playing\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab390248472642f4d96cfc281bcaf6c7, type: 2}
+  m_sharedMaterial: {fileID: -2708663948601950736, guid: ab390248472642f4d96cfc281bcaf6c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

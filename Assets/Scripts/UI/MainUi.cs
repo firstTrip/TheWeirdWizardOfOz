@@ -20,7 +20,7 @@ public class MainUi : MonoBehaviour
     void Update()
     {
         if(Input.anyKeyDown)
-            StageManager.Instance.LoadScene("Stage_1");
+            StageManager.Instance.LoadScene("Stage_0");
 
     }
 
